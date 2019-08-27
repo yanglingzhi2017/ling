@@ -1,0 +1,65 @@
+
+	<div class="content">
+		<div class="content_img">
+			<a href="index.php?m=Home&c=News"><img src="<?php echo $banner["photo"];?>" alt="" /></a>
+		</div>
+		<div class="content_title">
+			<div class="content_title_left">
+				<p class="content_left_subnav"  style="color:#000;">新闻中心</p>
+				<div class="content_tab">
+					<ul>
+					<?php foreach($listnavson as $k=>$r){ if($r['id']==49 || $r['id']==50){?>
+					
+						<li <?php if(!empty($_GET["y"])){if($_GET["y"]==$r["module"]){echo 'style="background-color:#664f6a;"';}}?>><a href="index.php?m=Home&c=News&a=index&y=<?php echo $r["module"];?>"><?php echo $r["catname"]; ?></a></li>						
+						<?php }}?>
+					</ul>
+				</div>
+			</div>
+			<div class="content_title_right">
+				<div class="content_right_subnav">
+					<div class="content_left">
+						<span>新闻中心/</span><span class="content_left_column_right"> NEWS</span>
+					</div>
+					<div class="content_right">当前位置 >  首页 >  <span>新闻中心</span></div>
+				</div>
+				<div class="content_main">
+					<ul>
+					<?php foreach($re as $k=>$r){?>
+						
+						
+						<li><a href="index.php?m=Home&c=News&a=detail&act=<?php echo $r["id"];?>"><img src="<?php echo $r["photo"];?>" alt=""/></a><a href="index.php?m=Home&c=News&a=detail&act=<?php echo $r["id"];?>" class="a1"><?php echo $r["title"];?></a><p style="word-wrap:break-word;"><?php $newscontent=mb_substr($r["content"],0,200,'utf-8'); echo $newscontent;?></p><br/><br/></li>
+						<div style="clear:both";></div>
+						<?php }?>
+					</ul>
+				</div>
+				<div class="content_main_bottom">
+					<ul>
+						<li><a href="index.php?m=Home&c=News&a=index&p=1">首页 </a></li>
+						<li><a href="index.php?m=Home&c=News&a=index&p=<?php echo $yi;?>">上一页 </a></li>
+						
+						<?php echo $showpage;?>
+	 						
+						
+						<li><a href="index.php?m=Home&c=News&a=index&p=<?php echo $ui;?>">下一页 </a></li>
+						<li><a href="index.php?m=Home&c=News&a=index&p=<?php echo $sunPage;?>">尾页</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+	<!-- JavaScript Document -->
+		<script>
+$(function(){
+	var title=$('.content_tab ul li');
+	title.click(function(){
+		title.removeAttr('id');
+		$(this).attr('id','a');
+	
+	});
+
+		
+	});
+	</script>
+	

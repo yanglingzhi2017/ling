@@ -1,0 +1,91 @@
+
+	<div class="content">
+		<div class="content_img">
+			<img src="Home/html/images/tupian_26.png" alt="" />
+		</div>
+		<div class="content_title">
+			<div class="content_title_left">
+				<p class="content_left_subnav">产品详情页</p>
+				<div class="content_tab">
+					<ul>
+						<li><a href="index.php?m=Home&c=Product&a=index&y=family">家居装修</a></li>
+						<li ><a href="index.php?m=Home&c=Product&a=index&y=work">办公装修</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content_title_right">
+				<div class="content_right_subnav">
+					<div class="content_left">
+						<span><?php $li=getOne('zc_category','id='.$prolist["productpig"]); echo $li["catname"];?>/</span><span class="content_left_column_right"> CASE</span>
+					</div>
+					<div class="content_right">当前位置 >  首页 ><span>产品中心</span></div>
+				</div>
+				<div class="content_main">
+					<div class="content_main_top">
+						<div class="content_main_top_left">
+							<a>户型参数</a><br/><span>装修风格：<?php echo $prolist["name"];?><p>装修价格：<?php echo $prolist["price"];?></p></span>
+						</div>
+						<div class="content_main_top_center">
+							<span>装修户型： <?php echo $prolist["house"];?></span><p>服务类型：<?php echo $prolist["serve"];?></p>
+						</div>
+						<div class="content_main_top_right">装修面积：<?php echo $prolist["area"];?></div>
+					</div>
+					<div class="content_main_bottom">
+						<div class="game163" style="margin:0 auto">
+							 <ul class="bigImg">							 
+							 <li>
+									<a href="" target="_blank"><img src="<?php echo $prolist["photo"];?>" /></a>
+									<h4><a href="" target="_blank"></a></h4>
+								</li>
+							 <?php $i=1; foreach($ki as $k=>$r){?>
+							 <?php if($i<3){?>
+								<li>
+									<a href="" target="_blank"><img src="<?php echo $r;?>" /></a>
+									<h4><a href="" target="_blank"></a></h4>
+								</li>
+								<?php }?>
+								<?php $i++;}?>
+							</ul>
+							<div class="smallScroll">
+								<a class="sPrev" href="javascript:void(0)">←</a>
+								<div class="smallImg">
+										 <ul>
+										 <li><a><img src="<?php echo $prolist["photo"];?>" /></a></li>
+										  <?php $i=1; foreach($ki as $k=>$r){?>
+										  <?php if($i<3){?>
+											<li><a><img src="<?php echo $r;?>" /></a></li>
+											
+											<?php }$i++;}?>
+										</ul>
+								</div>
+								<a class="sNext" href="javascript:void(0)">→</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

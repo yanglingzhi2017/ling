@@ -1,0 +1,52 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">文章列表</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="table-responsive" style="padding:0 10px">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+										     <th>ID</th>
+                                            <th>标题</th>
+                                            <th>作者</th>
+                        
+                                            <th>添加时间</th>
+											<th>更新时间</th>
+											<th>操作(action)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									<?php foreach($list as $k=>$r){?>
+                                        <tr>
+										    <td><?php echo $r["id"];?></td>
+                                            <td><?php echo $r["title"];?></td>
+                                            <td><?php echo $r["author"];?></td>
+                                            
+                                            <td><?php echo date('Y-m-d H:i:s',$r["protime"]);?></td>
+											<td><?php if(!empty($r["uptime"])){echo date('Y-m-d H:i:s',$r["uptime"]);}?></td>
+											<td><a href="index.php?m=Admin&c=Article&a=edit&id=<?php echo $r["id"];?>">修改</a> / <a href="index.php?m=Admin&c=Article&a=delete&id=<?php echo $r["id"];?>">删除</a></td>
+                                        </tr>
+										<?php }?>
+                                     
+                                    </tbody>
+                                </table>
+								 <ul class="pagination">
+								
+								    <?php for($i=1;$i<=$sunPage;$i++){ ?>
+		 
+		<li><a href="index.php?m=Admin&c=Article&a=index&p=<?php echo $i;?>" <?php if(!empty($_GET['p'])){if($_GET['p']==$i){echo 'style="background-color:#0000ff; color:white"';}}?>><?php echo $i;?></a></li>
+		   
+	  <?php }?>
+								</ul>
+                            </div>
+            </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>

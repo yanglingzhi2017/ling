@@ -1,0 +1,67 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">菜单列表</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Kitchen Sink
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>名称</th>
+                                            <th>M参数</th>   
+											<th>C参数</th>
+											<th>A参数</th>
+                                            <th>层级（pid）</th>											
+											<th>操作</th
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									<?php foreach($list as $k=>$r){?>
+                                        <tr>
+                                            <td><?php echo $r["id"];?></td>
+                                            <td><?php echo $r["name"];?></td>
+											<td><?php echo $r["m"];?></td>
+											<td><?php echo $r["c"];?></td>
+											<td><?php echo $r["a"];?></td>
+											<td><?php echo $r["pid"];?></td>
+											<td><a href="index.php?m=Admin&c=Menu&a=edit&id=<?php echo $r["id"];?>">修改</a> / <a href="index.php?m=Admin&c=Menu&a=delete&id=<?php echo $r["id"];?>">删除</a></td>
+                                        </tr>
+										
+										<?php if(!empty($r["bot"])){?>
+									<?php foreach($r["bot"] as $kk=>$rr){?>	
+										<tr>
+                                            <td><?php echo $rr["id"];?></td>
+                                            <td>&nbsp;&nbsp;&nbsp;┨<?php echo $rr["name"];?></td>
+											<td><?php echo $rr["m"];?></td>
+											<td><?php echo $rr["c"];?></td>
+											<td><?php echo $rr["a"];?></td>
+											<td><?php echo $rr["pid"];?></td>
+											<td><a href="index.php?m=Admin&c=Menu&a=edit&id=<?php echo $rr["id"];?>">修改</a> / <a href="index.php?m=Admin&c=Menu&a=delete&id=<?php echo $rr["id"];?>">删除</a></td>
+										
+										<?php }}?>
+                                     <?php }?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End  Kitchen Sink -->
+                </div>
+            </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>

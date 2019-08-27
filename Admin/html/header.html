@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta Charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>网站后台管理系统</title>
+<script type="text/javascript" src="Admin/html/skin/js/jquery-1.10.2.js"></script>
+<link href="Admin/html/skin/css/bootstrap.css" rel="stylesheet" />
+<link href="Admin/html/skin/css/font-awesome.css" rel="stylesheet" />
+<link href="Admin/html/skin/css/basic.css" rel="stylesheet" />
+<link href="Admin/html/skin/css/custom.css" rel="stylesheet" />
+
+
+
+<script type="text/javascript" src="Admin/html/skin/js/bootstrap.js"></script> 
+<script type="text/javascript" src="Admin/html/skin/js/jquery.metisMenu.js"></script> 
+<script type="text/javascript" src="Admin/html/skin/js/custom.js"></script>
+<script type="text/javascript" src="Admin/html/skin/js/jquery.form.js"></script>
+
+<!--                      外接编辑器加载                         -->
+<link rel="stylesheet" href="Public/kindeditor/css/default.css" type="text/css" media="screen" />
+<script type="text/javascript" src="Public/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="Public/kindeditor/lang/zh-CN.js"></script>
+
+
+
+</head>
+<body>
+<div id="wrapper" >
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0;">
+        <div class="navbar-header" >
+            <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="index.html">网站后台管理系统</a> 
+        </div>
+        <div class="header-right"> 
+        <a href="index.php?m=Admin&c=Index&a=index" class="btn btn-primary"  title="浏览首页"><i class="fa fa-home fa-2x"></i></a> 
+        <a href="index.php?m=Admin&c=Contact_us&a=word" class="btn btn-info" title="新消息"><b>留言条数：<?php echo  $_SESSION["contact_word"];?>条</b><i class="fa fa-envelope-o fa-2x"></i></a> 
+        <a href="index.php?m=Admin&c=Login&a=Out" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a> 
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <div class="user-img-div"  style="background:#543921"> <img src="Admin/html/skin/img/user.jpg" class="img-thumbnail" />
+                        <div class="inner-text">管理人：<?php echo $_SESSION["Adminuserinfo"]["realname"];?> <br />
+                            <small>登入时间：<?php echo date('Y-m-d H:i:s',$_SESSION["Adminuserinfo"]["logintime"]);?></small><br/> 
+							<small>登入次数：<?php echo $_SESSION["Adminuserinfo"]["loginnum"];?></small>
+							
+							</div>
+
+                    </div>
+                </li>
+                <li> <a class="active-menu"  href="index.html"><i class="fa fa-dashboard "></i>管理菜单</a> </li>
+				
+				<?php foreach($menusu as $kk=>$rr){ 
+			
+                if($_SESSION["AdminuserRule"]=="all" || in_array($rr["id"],$ruleall)){
+
+				?>
+			
+                <li> <a <?php if($rr["c"]==$ctrl){echo 'class="active-menu-top"';}?> href="#"><i class="fa fa-desktop "></i><?php echo $rr["name"];?> <span class="fa arrow"></span></a>
+				<?php if(!empty($rr["sub"])){?>
+				
+				<!--?php foreach($rr["sub"] as $kk1=>$rr1){   }?-->
+                    <ul class="nav nav-second-level<?php if($rr["c"]==$ctrl){echo "collapse in";}?>">
+					<?php foreach($rr["sub"] as $kk1=>$rr1){  
+                   if($_SESSION["AdminuserRule"]=="all"|| in_array($rr["id"],$ruleall)){?>
+            <li> <a <?php if($rr1["c"]==$ctrl && $rr1["a"]==$action){echo 'class="active-menu"';}?> href="<?php echo $rr1["url"];?>"><i class="fa fa-toggle-on"></i><?php echo $rr1["name"];?></a> </li>
+                        
+                       <?php }}?>
+                    </ul>
+					 <?php }?>
+                </li>
+				
+				<?php }}?>
+               
+                       
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>

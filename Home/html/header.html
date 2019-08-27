@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>广州装饰设计首页</title>
+	<meta />    
+     <link type="text/css" rel="stylesheet" href="Home/html/css/header.css" />
+	<!--?php if($_GET["c"]=="Index"){echo '<link type="text/css" rel="stylesheet" href="Home/html/css/index.css" />';}?-->
+	<?php if($_GET["c"]=="News"){echo '<link rel="stylesheet" href="Home/html/css/news.css" />';}?>
+	<?php if($_GET["c"]=="Company"){echo '<link rel="stylesheet" href="Home/html/css/company.css" />';}?>
+	<?php if($_GET["c"]=="Product" && empty($_GET["a"])){echo '</title><link rel="stylesheet" href="Home/html/css/product.css" />';}?>
+	<?php if($_GET["c"]=="Contact_us"){echo '<link rel="stylesheet" href="Home/html/css/contact_us.css" />';}?>
+	<?php if(!empty($_GET["a"])){if($_GET["a"]=="detail"&& $_GET["c"]=="News"){echo '<link rel="stylesheet" href="Home/html/css/news_detail.css" />';}}?>
+	<?php if(!empty($_GET["a"])){if($_GET["a"]=="detail"&& $_GET["c"]=="Product"){echo '<link rel="stylesheet" href="Home/html/css/product_detail.css" />';}}?>
+	<?php if(!empty($_GET["a"])){if($_GET["a"]=="index"&& $_GET["c"]=="Product"){echo '</title><link rel="stylesheet" href="Home/html/css/product.css" />';}}?>
+	<?php if(!empty($_GET["a"])){?>
+	<?php if($_GET["a"]=="News"){echo '<link rel="stylesheet" href="Home/html/css/news.css" />';}?>
+	
+	<?php if($_GET["a"]=="Product"){echo '<link rel="stylesheet" href="Home/html/css/product.css" />';}?>
+	<?php }?>
+	
+	<!--[if lt IE 9]>      
+			<style type="text/css">
+			.content_tab ul li{
+	width:148px;
+	height:48px;
+	font-size:16px;
+	line-height:38px;
+	font-weight:bold;
+	font-family:微软雅黑;
+	text-align:center;
+}
+			
+			</style>   
+	<![endif]-->  
+	<!--[if lt IE 9]>      
+			<script src="js/IE9.js"></script>     
+		<![endif]-->
+		<script type="text/javascript" src="Home/html/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="Home/html/js/jquery.SuperSlide.2.1.js"></script>
+	<style type="text/css"></style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+<body>
+	<div class="head">
+		<div class="logo">
+			<a href="index.php?m=Home&c=Index"><img src="Home/html/images/logo_1.png" alt="" /></a>
+		</div>
+		<div class="search">
+		    <form role="form" action="index.php?c=Search" method="POST" name="frm">
+			  <select name="cat" style="float:left;height:34px;font-size:14px;background-color:#e3e3e3;line-height:34px;
+	color:#808080; bolder:none;">
+			      <option value="">请选择分类</option>
+			     <option value="1">搜索新闻</option>
+				 <option value="2">搜索产品</option>
+			  </select>
+				<input name="kw" class="search_impot" type="text" value="请输入您要查找的内容..." onfocus="if(value=='请输入您要查找的内容...') {value=''}" onblur="if (value=='') {value='请输入您要查找的内容...'}"/>
+				<input class="search_search"type="submit" value="搜索"/>
+				</form>
+		</div>
+		<div class="service">
+			<div>
+				<img src="Home/html/images/dianhua_2.png" alt="" />
+			</div>
+			<div class="service-tel">
+				<a href="index.php?m=Home&c=Index"><b>:<?php echo $listtel["headertel"];?></b></a>
+			</div>
+		</div>
+	</div>	
+    <?php $nav=getOne("zc_category","catname='首页导航'","*");
+$navlist=listAll("zc_category","*","pig=".$nav["id"],"id");?>
+	<div class="nav">
+				<ul>
+			  <?php foreach($navlist as $k=>$r){?>
+					<li class="nav_index" style="<?php if($r["module"]==$_GET["c"]){echo 'border-top:2px solid #fe9b00';}?>"><a href="<?php echo "index.php?m=Home&c=".$r["module"];?>" <?php if($r["module"]==$_GET["c"]){echo 'style="color:#fe9b00;"';}?>><?php echo $r["catname"];?></a></li>
+					
+					
+				<?php }?>
+				</ul>
+	</div>

@@ -1,0 +1,96 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">产品修改</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                 <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info">
+                        <div class="panel-heading">
+                           BASIC FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" name=frm action="" method="post" enctype="multipart/form-data">
+							
+							             <div class="form-group">
+                                            <label>装修类型</label>
+									   <select name="productpig" id="productpig">
+									   <?php foreach($prolist as $k=>$r){?>
+									      <option value="<?php echo $r["id"];?>" <?php if($r["id"]==$re["productpig"]){echo 'selected="selected"';}?>><?php echo $r["catname"];?></option>
+										  
+										  <?php }?>
+									   </select>
+                                           
+                                        </div>
+                                        <div class="form-group">										   
+                                            <label>装修风格</label>
+                                            <input class="form-control" type="text" name="name" value="<?php echo $re["name"];?>">
+                                           
+                                        </div>
+                                
+										 <label>装修价格</label>
+										 <input class="form-control" type="text" name="price" value="<?php echo $re["price"];?>">
+										
+                                            <div class="form-group">
+                                            <label>产品图片</label>	
+											<input type="file" name="photo">
+											<div class="form-group" id="add">
+										<label>细节图</label><input type="button" id="addpid" name="pi" value="+">
+										<input type="file" name="pic[]">
+										</div>
+											
+											 <label>装修户型</label>	
+                                        <textarea name="house" style="width:100%"><?php echo $re["house"];?></textarea>
+										   <div class="form-group">
+                                            <label>服务类型</label>
+                                            <input class="form-control" type="text" name="serve" value="<?php echo $re["serve"];?>">
+                                           
+                                        </div>
+										<div class="form-group">
+                                            <label>装修面积</label>
+                                            <input class="form-control" type="text" name="area" value="<?php echo $re["area"];?>">
+                                           
+                                        </div>
+										  
+
+											<script type="text/javascript">
+            KindEditor.ready(function(K) {
+                K.create('textarea[name="house"]', {
+					cssPath : 'Public/kindeditor/plugins/code/prettify.css',
+					uploadJson : 'Public/kindeditor/php/upload_json.php',
+				});
+				
+				prettyPrint();
+            });
+        </script>
+											
+                                        </div>
+                                  
+                                 
+                                        <button type="submit" class="btn btn-info">修改产品</button>
+
+                                    </form>
+                            </div>
+                        </div>
+                            </div>
+            </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>
+	
+	<script>
+	   $(document).ready(function(){
+	      $("#addpid").click(function(){
+		     var htmlstr='<br/><input type="file" name="pic[]">';
+			 $("#add").append(htmlstr);
+		  });
+	   });
+	   
+
+	
+	</script>

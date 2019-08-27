@@ -1,0 +1,73 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">banner添加</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                 <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info">
+                        <div class="panel-heading">
+                           BASIC FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" name=frm action="" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>banner标题</label>
+                                            <input class="form-control" type="text" name="title">
+                                           
+                                        </div>
+                                 <div class="form-group">
+                                            <label>公司</label>
+                                            <input class="form-control" type="text" name="company">
+                                           
+                                        </div>
+										 <label>banner主图</label>
+										<input type="file" name="photo">
+										<div class="form-group" id="add">
+										<label>细节图</label><input type="button" id="addpid" name="pi" value="+">
+										<input type="file" name="pic[]">
+										</div>
+                                            <div class="form-group">
+                                            <label>banner图详情</label>
+                                        <textarea name="content" style="width:100%"></textarea>
+											
+											<script type="text/javascript">
+            KindEditor.ready(function(K) {
+                K.create('textarea[name="content"]', {
+					cssPath : 'Public/kindeditor/plugins/code/prettify.css',
+					uploadJson : 'Public/kindeditor/php/upload_json.php',
+				});
+				
+				prettyPrint();
+            });
+        </script>
+											
+                                        </div>
+                                  
+                                 
+                                        <button type="submit" class="btn btn-info">添加 </button>
+
+                                    </form>
+                            </div>
+                        </div>
+                            </div>
+            </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>
+	<script>
+	   $(document).ready(function(){
+	      $("#addpid").click(function(){
+		     var htmlstr='<br/><input type="file" name="pic[]">';
+			 $("#add").append(htmlstr);
+		  });
+	   });
+	   
+
+	
+	</script>

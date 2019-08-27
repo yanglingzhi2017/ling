@@ -1,0 +1,33 @@
+
+	<div class="content">
+		<div class="content_img">
+			<a href="index.php?m=Home&c=Company"><img src="<?php echo $banner["photo"];?>" alt="" /></a>
+		</div>
+		<div class="content_title">
+			<div class="content_title_left">
+				<p class="content_left_subnav">公司介绍</p>
+				<div class="content_tab">
+					<ul>
+					<?php foreach($com as $k=>$r){?>
+						<li <?php if(!empty($_GET["y"])){if($_GET["y"]==$r["module"]){echo 'style="background-color:#664f6a;"';}}?>><a href="index.php?m=Home&c=Company&a=index&y=<?php echo $r["module"];?>"><?php echo $r["catname"];?></a></li>						
+						<?php }?>
+					</ul>
+				</div>
+			</div>
+			<div class="content_title_right">
+				<div class="content_right_subnav">
+					<div class="content_left">
+						<span><?php echo $listarticle["title"];?>/</span><span class="content_left_column_right"> company introduction</span>
+					</div>
+					<div class="content_right">首页 > 当前页  <span>><?php echo $listarticle["title"];?></span></div>
+				</div>
+				<div class="content_main">
+					<div class="content_main_top"><?php echo $listarticle["title"];?></div>
+					<div class="content_main_bottom"><?php echo $listarticle["content"];?></div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+	

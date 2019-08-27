@@ -1,0 +1,94 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">新闻修改</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                 <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info">
+                        <div class="panel-heading">
+                           BASIC FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" name=frm action="" method="post" enctype="multipart/form-data">
+							         <div class="form-group">
+                                            <label>所属类别</label>
+									   <select name="newpig" id="newpig">
+									   <?php foreach($newlist as $k=>$r){?>
+									      <option value="<?php echo $r["id"];?>" <?php if($r["id"]==$re["newpig"]){echo 'selected="selected"';}?>><?php echo $r["catname"];?></option>
+										  
+										  <?php }?>
+									   </select>
+                                        </div>
+										
+										 <div class="form-group">
+                                            <label>标题</label>
+                                            <input class="form-control" type="text" name="title" value="<?php echo $re["title"];?>">
+                                           
+                                        </div>
+                                        <div class="form-group">
+                                            <label>网站地址</label>
+                                            <input class="form-control" type="text" name="address" value="<?php echo $re["address"];?>">
+                                           
+                                        </div>
+										 <div class="form-group">
+                                            <label>来源</label>
+                                            <input class="form-control" type="text" name="from" value="<?php echo $re["from"];?>">
+                                           
+                                        </div>
+										<div class="form-group">
+										<label>新闻配图</label>
+										<input type="file" name="photo">
+										</div>
+										<div class="form-group" id="add">
+										<label>细节图</label><input type="button" id="addpid" name="pi" value="+">
+										<input type="file" name="pic[]">
+										</div>
+										  <div class="form-group">
+                                            <label>新闻内容</label>
+                                        <textarea name="content" style="width:100%" ><?php echo $re["content"];?></textarea>
+											
+											<script type="text/javascript">
+            KindEditor.ready(function(K) {
+                K.create('textarea[name="content"]', {
+					cssPath : 'Public/kindeditor/plugins/code/prettify.css',
+					uploadJson : 'Public/kindeditor/php/upload_json.php',
+				});
+				
+				prettyPrint();
+            });
+        </script>
+											
+                                        </div>
+                                
+										 
+                                         
+                               <input class="form-control" type="hidden" name="updatetime" >
+                                 
+                                        <button type="submit" class="btn btn-info">提交修改</button>
+
+                                    </form>
+                            </div>
+                        </div>
+                            </div>
+            </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>
+	
+	<script>
+	   $(document).ready(function(){
+	      $("#addpid").click(function(){
+		     var htmlstr='<br/><input type="file" name="pic[]">';
+			 $("#add").append(htmlstr);
+		  });
+	   });
+	   
+
+	
+	</script>

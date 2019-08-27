@@ -1,0 +1,93 @@
+
+	<div class="main">
+		<div class="top">
+			<img src="Home/html/images/tupian_21.png" alt="" />
+		</div>
+		<div class="center">
+			<div class="main_left">
+				<ul>
+					<li><a href="index.php?m=Home&c=News">新闻中心</a></li>
+					<li id="p1"><a href="index.php?m=Home&c=News&a=index&y=Company">公司新闻</a></li>
+					<li id="p2"><a href="index.php?m=Home&c=News&a=index&y=Calling">行业新闻</a></li>
+				</ul>
+			</div>
+			<div class="main_right">
+				<div class="subnav">
+					<ul>
+						<li>
+							<a href="" class="chinese">新闻中心/  </a>
+							<a href="" class="english">   NEWS</a>
+						</li>
+						<li>
+							<a href="" class="index">当前位置    >     首页   ></a>
+							<a href="" class="news">   新闻中心</a>
+						</li>
+					</ul>
+				</div>
+				<div class="main_top">
+					<div class="content">
+						<ul>
+							<li>
+								<a href=""class="title"><?php echo $re["title"];?>
+								</a>
+							</li>
+							<li>
+								<a href=""><?php echo $re["address"];?></a>
+								<a href="time"><?php echo date('Y-m-d H:i:s',$re["addtime"]);?></a>
+								<a href=""><?php echo $re["from"];?></a>
+							</li>
+						</ul>
+						<div class="content_main_center"><?php echo $re["content"];?>
+						</div>
+					</div>
+					<div class="sidebar">
+						<ul>
+							<li><a href="index.php?m=Home&c=News&a=detail&act=<?php if(!empty($toplist)){echo $toplist[0]["id"];}else{echo $re["id"];}?>">上一篇</a></li>
+							<li><a href="index.php?m=Home&c=News&a=detail&act=<?php if(!empty($toblist)){echo $toblist[0]["id"];}else{echo $re["id"];}?>">下一篇</a></li>
+						</ul>
+					</div>
+					<div class="content_bottom">
+						<div class="content_bottom_main_left">
+							<div class="left_subnav"><a href="">相关新闻</a></div>
+							<div class="bottom">
+								<ul>
+								<?php foreach($relist as $k=>$r){?>
+									<li><a href="index.php?m=Home&c=News&a=detail&act=<?php echo $r["id"];?>"><?php echo $r["title"];?></a></li>
+									
+									<?php }?>
+								</ul>
+							</div>
+						</div>
+						<div class="content_bottom_main_right">
+							<div class="right_subnav"><a href="">热门推荐</a></div>
+							<div class="bottom">
+								<ul>
+								<?php foreach($tuilist as $k=>$r){?>
+									<li><a href="index.php?m=Home&c=News&a=detail&act=<?php echo $r["id"];?>"><?php echo $r["title"];?></a></li>
+									
+									<?php }?>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	   $(document).ready(function(){
+	    $("#p1").click(function(){
+		
+		$("#p1").css("background","#664f6a");
+			$("#p2").css("background","");
+		
+		})
+		
+		$("#p2").click(function(){
+			$("#p2").css("background","#664f6a");
+				$("#p1").css("background","");
+		})
+	})
+	</script>
+	

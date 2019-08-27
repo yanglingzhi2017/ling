@@ -1,0 +1,60 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">添加菜单</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+           <div class="col-md-6 col-sm-6 col-xs-12">
+               <div class="panel panel-danger">
+                        <div class="panel-heading">
+                           SINGUP FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" action=" " method="post" name="frm">
+                                        
+                                 <div class="form-group">
+                                            <label>名称</label>
+                                            <input class="form-control" type="text" name="name" >
+                                     <p class="help-block">Help text here.</p>
+                                        </div>
+										
+										 <div class="form-group">
+                                            <label>所属菜单</label>
+											<select name="pid">
+											   <option value="0">一级菜单</option>
+											   <?php foreach($catlist as $k=>$r){?>
+											   <option value="<?php echo $r["id"];?>"><?php echo $r["name"];?></option>
+											   <?php }?>
+											</select>
+											
+										<div class="form-group">
+                                            <label>M参数</label>
+                                            <input class="form-control" type="text" name="m" >
+                                     <p class="help-block">Help text here.</p>
+                                        </div>
+										<div class="form-group">
+                                            <label>C参数</label>
+                                            <input class="form-control" type="text" name="c" >
+                                     <p class="help-block">Help text here.</p>
+                                        </div>
+										<div class="form-group">
+                                            <label>A参数</label>
+                                            <input class="form-control" type="text" name="a" >
+                                     <p class="help-block">Help text here.</p>
+                                        </div>
+                                           
+                                           
+                                 
+                                        <button type="submit" class="btn btn-danger">提交添加</button>
+
+                                    </form>
+                            </div>
+                        </div>
+                   </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>

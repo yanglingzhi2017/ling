@@ -1,0 +1,54 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">文章修改</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+             <div class="row">
+             <div class="row">
+                 <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info">
+                        <div class="panel-heading">
+                           BASIC FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" name=frm action="" method="post">
+							<input type="hidden" name="id" value="<?php echo $re["id"] ?>"  />
+                                        <div class="form-group">
+                                            <label>标题</label>
+                                            <input class="form-control" type="text" name="title" value="<?php echo $re["title"]; ?>">
+                                           
+                                        </div>
+                                 <div class="form-group">
+                                            <label>作者</label>
+                                            <input class="form-control" type="text" name="author" value="<?php echo $re["author"]; ?>">
+                                    
+                                        </div>
+                                            <div class="form-group">
+                                            <label>内容</label>
+                                            <textarea class="form-control" rows="3" name="content" value="" style="width:100%"><?php echo $re["content"];?></textarea>
+                                        </div>
+                                  <script type="text/javascript">
+            KindEditor.ready(function(K) {
+                K.create('textarea[name="content"]', {
+					cssPath : 'Public/kindeditor/plugins/code/prettify.css',
+					uploadJson : 'Public/kindeditor/php/upload_json.php',
+				});
+				
+				prettyPrint();
+            });
+        </script>
+                                 
+                                        <button type="submit" class="btn btn-info">提交修改 </button>
+
+                                    </form>
+                            </div>
+                        </div>
+                            </div>
+            </div>
+        </div>
+        <!-- /. PAGE INNER  --> 
+    </div>

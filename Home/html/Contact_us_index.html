@@ -1,0 +1,290 @@
+
+	<div class="content">
+		<div class="content_img">
+			<a href="index.php?m=Home&c=Contact_us"><img src="<?php echo $banner['photo'];?>" alt="" /></a>
+		</div>
+		<div class="content_title">
+			<div class="content_title_left">
+				<p class="content_left_subnav">联系我们</p>
+				<div class="content_tab">
+					<ul>
+						<li id="p1" style="background-color: #664f6a;"><a>联系方式</a></li>
+						<li id="p2"><a>在线留言</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content_title_right" id="ui">
+				<div class="content_right_subnav">
+					<div class="content_left">
+						<span>联系我们/</span><span class="content_left_column_right">CONTACT US</span>
+					</div>
+					<div class="content_right">当前位置 >  首页 ><span>联系我们</span></div>
+				</div>
+				<div class="content_main">
+					<div class="content_main_left">
+						<ul>					
+							<li>公司：<?php  echo $listcatact["company"];?></li>
+							<li>联系地址：<?php  echo $listcatact["address"];?></li>
+							<li>邮政编码：<?php  echo $listcatact["postalcode"];?></li>
+							<li>全国免费热线:<?php  echo $listcatact["link"];?></li>
+							<li>电话：<?php  echo $listcatact["telephone"];?></li>
+							<li>传真：<?php  echo $listcatact["faxes"];?> </li>
+							<li>邮箱：<?php  echo $listcatact["mailbox"];?></li>
+						</ul>
+					</div>
+					<div class="content_main_right" id="dituContent">   <!--  地图 -->
+					</div>
+				</div>
+			</div>
+			<div class="content_title_left" id="uo" style="float:right; height:358px; width:1048px; display:none;">
+			<div class="content_right_subnav">
+					<div class="content_left">
+						<span>在线留言/</span><span class="content_left_column_right">CONTACT US</span>
+					</div>
+					<div class="content_right">当前位置 >  首页 ><span>在线留言</span></div>
+				</div>
+			      <div class="jo" style="border-top: 2px solid #cdcccc;height: 313px; margin-left: 23px; width: 993px;" >
+             <div class="co"  >
+                 <div class="from_left">
+                         <span>姓名:</span>
+                          <input type="text" class="p1" name="name" placeholder="姓名" id="name"/><br/>
+						  <span>电话:</span>
+                          <input type="text" class="p1"  name="phone" placeholder="电话" id="phone"/><br/>
+						  <span>邮箱:</span>
+                          <input type="text" class="p1"  name="postmail" placeholder="邮箱" id="postmail"/><br/>
+                     
+                 </div>
+                 <div class="from_cen">
+				  <span>留言:</span>
+                     <textarea name="content" style="resize:none" placeholder="请输入您的留言内容" id="content"></textarea>
+                 </div>
+                 <div style="float:left;">
+                  <!-- <input type="submit" class="from_right" value="提交留言"/> -->
+				  <button type="BUTTON" class="from_right" id="userbotton">提交留言</button>
+				   <input type="reset" class="botton" value="清空留言"/>
+                  </div>
+				  
+				  <div  style="float:left; margin-left:15px;">
+                                           
+                                            
+											<img src="lib/imgode.php" onclick="yzmclick()" style="width:108px; cursor:pointer; height:40px;float:left;" id="ar" />
+											<input type="text" class="form-control"  placeholder="输入验证码" id="yzm" name="yzm" style="width:150px;height:40px; border:1px solid #999; float:left; margin-left:15px; padding-left:10px;" />
+                                        </div>
+										
+                  </div>
+                  </div>
+			</div>
+		</div>
+		<script>
+		
+	$(document).ready(function(){
+	    $("#userbotton").click(function(){
+		    	$.ajax({
+	url:"lib/Contact_us_ajax.php",
+	type:"post",
+	data:{"name":$("#name").val(),"phone":$("#phone").val(),"postmail":$("#postmail").val(),"content":$("#content").val(),"yzm":$("#yzm").val(),},
+	timeout:8000,
+	datatype:"text",
+	success:function(msg){
+	if(msg=='yzm'){
+	 alert('验证码不能为空！')
+	  $("#name").val("");
+	   $("#phone").val("");
+	    $("#postmail").val("");
+		 $("#content").val("");
+		 
+	}
+	if(msg=='empty'){
+	 alert('姓名或电话不能为空！')
+	  $("#name").val("");
+	   $("#phone").val("");
+	    $("#postmail").val("");
+		 $("#content").val("");
+		 
+	}
+	if(msg=='zm'){
+	 alert('验证码错误！')
+	  $("#name").val("");
+	   $("#phone").val("");
+	    $("#postmail").val("");
+		 $("#content").val("");
+		 $("#yzm").val("");
+	}
+	
+	if(msg=='yes'){
+	  alert('留言成功')
+	  $("#name").val("");
+	   $("#phone").val("");
+	    $("#postmail").val("");
+		 $("#content").val("");
+		$("#yzm").val("");
+	}
+
+	
+	else{
+	
+	$("#name").val("");
+	   $("#phone").val("");
+	    $("#postmail").val("");
+		 $("#content").val("");
+		 $("#yzm").val("");
+	}
+	},
+	error:function(){
+	     alert("网络有问题");
+	},
+	
+	})
+		});
+	});
+	
+	</script>
+		<script>
+		
+		$(document).ready(function(){
+		  $("#p1").click(function(){
+			$.ajax({
+			success:function(){
+			           $("#uo").hide();    
+					   $("#ui").show();
+					   $("#p1").css("background-color","#664f6a");
+					   $("#p2").css("background","");
+		
+			},
+			error:function(){
+				alert('网络有问题');
+			}
+		})
+		})
+		
+		
+		$("#p2").click(function(){
+			$.ajax({
+		           //目标地
+			type:"post",		//提交方式			
+			timeout:8000,		//超时时间
+			datatype:"json",	//结果返回格式,text,html,json
+			success:function(){
+			 
+				
+			           $("#ui").hide();
+					   $("#uo").show();
+					   $("#p2").css("background-color","#664f6a");
+					   $("#p1").css("background","");
+		
+			},
+			error:function(){
+				alert('网络有问题');
+			}
+		})
+		})
+		})		  
+		</script>
+		
+		<script>
+	   function yzmclick(){
+	   document.getElementById("ar").src="lib/imgode.php?p="+Math.random();
+	   }
+	
+	</script>
+		
+ 	<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+    
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(113.316973,23.226309);//定义一个中心点坐标
+        map.centerAndZoom(point,18);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+    
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+	map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
+    
+    //标注点数组
+    var markerArr = [{title:"广州CINT装饰设计有限公司",content:"我的备注",point:"113.31589|23.226981",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+		 ];
+    //创建marker
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    
+    initMap();//创建和初始化地图
+</script>
+	
+</body>
+</html>

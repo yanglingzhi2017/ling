@@ -1,0 +1,44 @@
+	<div style="clear:both;"></div>
+	<div class="foot">
+		<div class="friendlink">
+			<div class="friendlink_top">
+				<span class="left_friendlink_top">友情链接/ </span>
+				<span class="friendlink_trend">FRIENDLY LINK</span>
+			</div>
+			<div class="friendlink_nav">
+				<ul>
+				<?php $friend=listAll("friend","*");?>
+				<?php foreach($friend as $k=>$r){?>
+					<li><a href="<?php echo $r["address"];?>"><?php echo $r["title"];?></a></li>
+					
+					<?php }?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+		<div class="bottom1">
+			<div class="bottom_copyright">
+				<div class="bottom_copyright_top">
+					<span>© 20010-20011 版权所有 2003 -2010 dodi.cn分享设计作品？就去多迪梦工厂！</span>
+				</div>
+				<div class="bottom_copyright_bottom">
+					<span>联系地址：广东省广州市白云区永泰恒企大厦</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+	</html>
+	<script type="text/javascript">
+		//大图切换
+		jQuery(".game163").slide({ titCell:".smallImg li", mainCell:".bigImg", effect:"fold", autoPlay:true,delayTime:200,
+			startFun:function(i,p){
+				//控制小图自动翻页
+				if(i==0){ jQuery(".game163 .sPrev").click() } else if( i%4==0 ){ jQuery(".game163 .sNext").click()}
+			}
+		});
+
+		//小图左滚动切换
+		jQuery(".game163 .smallScroll").slide({ mainCell:"ul",delayTime:100,vis:4,scroll:4,effect:"left",autoPage:true,prevCell:".sPrev",nextCell:".sNext",pnLoop:false });
+	</script>

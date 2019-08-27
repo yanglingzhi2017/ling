@@ -1,0 +1,49 @@
+ <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">首页联系方式</h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+           <div class="col-md-6 col-sm-6 col-xs-12">
+               <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          Indexconcat
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" action="" method="post" name="frm">
+                           <?php foreach($listcatact as $k=>$r){?>             
+                                 <div class="form-group">
+                                            <label>首页头部电话：</label>
+                                            <input class="form-control" type="text" name="headertel"  id="headertel" value="<?php echo $r["headertel"];?>" />
+											
+                                
+                                        </div>
+                                            <div class="form-group">
+                                            <label>全国免费专线：</label>
+                                            <input class="form-control" type="text" name="alltel"   value="<?php echo $r["alltel"];?>">
+                                    
+                                        </div>
+                                <div class="form-group">
+                                            <label>商务热线：</label>
+                                            <input class="form-control" type="text" name="hottel" id="postalcode"  value="<?php echo $r["hottel"];?>">
+                                    
+									 <label>E-mail：</label>
+									   <input class="form-control" type="text" name="email" id="email"  value="<?php echo $r["email"];?>">
+									 
+									  <label>底部联系地址：</label>
+									   <input class="form-control" type="text" name="adress" id="adress"  value="<?php echo $r["adress"];?>">
+                                        </div>
+  
+                                        <input type="submit" class="btn btn-danger" value="提交修改">
+                                      
+										<?php }?>
+                                    </form>
+                            </div>
+                        </div>
+                   </div>
+            
+        </div>
+        <!-- /. PAGE INNER  --> 
